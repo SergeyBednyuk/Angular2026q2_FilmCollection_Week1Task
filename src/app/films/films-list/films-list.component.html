@@ -1,1 +1,11 @@
-<p>films-list works!</p>
+<div>
+	@if (isLoading()) {
+		<p>Loading...</p>
+	} @else if (films().length === 0) {
+		<p>No films available.</p>
+	} @else {
+		@for (film of films(); track film.id) {
+			<app-film-item [film]="film"/>
+		}
+	}
+</div>
