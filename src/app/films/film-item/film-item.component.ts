@@ -1,9 +1,17 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { RouterLink } from "@angular/router";
+
+import { FilmModel } from "../../models/film.model";
 
 @Component({
-  selector: 'app-film-item',
-  imports: [],
-  templateUrl: './film-item.component.html',
-  styleUrl: './film-item.component.css',
+    selector: 'app-film-item',
+    imports: [
+        RouterLink
+    ],
+    templateUrl: './film-item.component.html',
+    styleUrl: './film-item.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FilmItemComponent {}
+export class FilmItemComponent {
+    film = input.required<FilmModel>();
+}
