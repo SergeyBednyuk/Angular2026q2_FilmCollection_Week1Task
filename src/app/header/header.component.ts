@@ -1,9 +1,15 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from "@angular/router";
 
 @Component({
-  selector: 'app-header',
-  imports: [],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.css',
+    selector: 'app-header',
+    imports: [
+        RouterLink
+    ],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+    protected appTitle: string = "Super Custom Film Collection"
+}
