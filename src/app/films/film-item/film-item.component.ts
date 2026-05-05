@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { RouterLink } from "@angular/router";
 
 import { FilmModel } from "../../models/film.model";
+import { FilmService } from "../../services/film.service";
 
 @Component({
     selector: 'app-film-item',
@@ -13,5 +14,10 @@ import { FilmModel } from "../../models/film.model";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilmItemComponent {
+    private filmService = inject(FilmService);
     film = input.required<FilmModel>();
+
+    onToggleFavorite(){
+        this.filmService.markAsFavorite(this.film().id);
+    }
 }
