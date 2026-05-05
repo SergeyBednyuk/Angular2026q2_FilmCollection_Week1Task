@@ -1,0 +1,17 @@
+@if (isLoading()) {
+	<p>Loading...</p>
+} @else if (!film()){
+	<p>Film Not Found.</p>
+} @else {
+	@let f = film()!;
+	<article>
+		<img [src]="f.posterUrl" [alt]="f.title">
+		<h2>{{ f.title }}</h2>
+		<p>{{ f.year }} · {{ f.genre }}</p>
+		<p>Rating: {{ f.rating }}</p>
+		<p>{{ f.duration | duration }}</p>
+		<p>{{ f.description }}</p>
+	</article>
+}
+
+<button (click)="onGoBack()">← Back to films</button>
