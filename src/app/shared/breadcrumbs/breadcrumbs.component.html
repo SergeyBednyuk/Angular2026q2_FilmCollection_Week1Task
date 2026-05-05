@@ -1,1 +1,8 @@
-<p>breadcrumbs works!</p>
+@for (crumb of crumbs(); track crumb.url; let isLast = $last) {
+	@if (isLast) {
+		<span>{{ crumb.label }}</span>
+	} @else {
+		<a [routerLink]="crumb.url">{{ crumb.label }}</a>
+		<span> &gt; </span>
+	}
+}
